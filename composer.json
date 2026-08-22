@@ -1,0 +1,27 @@
+{
+    "name": "veldora/ui",
+    "description": "Official UI component library for the Veldora PHP framework",
+    "version": "0.1.0",
+    "type": "library",
+    "keywords": ["veldora", "ui", "components", "php", "templates"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shahriyar Fahim"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "veldora/framework": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Veldora\\UI\\": "src/"
+        }
+    },
+    "extra": {
+        "veldora": {
+            "providers": []
+        }
+    }
+}
