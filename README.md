@@ -1,6 +1,8 @@
 <div align="center">
 
-# ▲ Veldora UI
+<img src="https://raw.githubusercontent.com/veldorahq/veldora-ui/main/assets/v-icon.png" width="80" height="80" alt="Veldora Logo">
+
+# Veldora UI
 
 **Accessible, copy-and-paste UI components for the Veldora PHP Framework.**
 
