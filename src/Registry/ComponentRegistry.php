@@ -544,7 +544,9 @@ $sizeClass = $sizes[$size] ?? $sizes['md'];
             <?php if ($title): ?>
                 <h2 id="<?= $id ?>-title" class="vui-modal-title"><?= htmlspecialchars($title) ?></h2>
             <?php endif; ?>
-            <button type="button" class="vui-modal-close" onclick="document.getElementById('<?= $id ?>').setAttribute('aria-hidden','true')" aria-label="Close">✕</button>
+            <button type="button" class="vui-modal-close" onclick="document.getElementById('<?= $id ?>').setAttribute('aria-hidden','true')" aria-label="Close" style="display:inline-flex;align-items:center;justify-content:center;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
         </div>
         <div class="vui-modal-body">
             <?= $slot ?>
@@ -672,7 +674,9 @@ $menuClass = 'vui-dropdown-menu' . ($align === 'right' ? ' vui-dropdown-right' :
         onclick="(function(el){var open=el.getAttribute('aria-expanded')==='true';el.setAttribute('aria-expanded',!open);el.nextElementSibling.classList.toggle('vui-dropdown-open',!open);})(this)"
     >
         <?= htmlspecialchars($label) ?>
-        <span class="vui-dropdown-caret" aria-hidden="true">▾</span>
+        <span class="vui-dropdown-caret" aria-hidden="true" style="display:inline-flex;align-items:center;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
     </button>
     <ul class="<?= $menuClass ?>" role="menu">
         <?= $slot ?>
@@ -725,10 +729,14 @@ $navId     = 'vui-nav-' . substr(md5($brand), 0, 6);
             class="vui-navbar-toggle"
             aria-controls="<?= $navId ?>"
             aria-expanded="false"
-            onclick="(function(btn){var open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',!open);document.getElementById('<?= $navId ?>').classList.toggle('vui-navbar-open',!open);})(this)"
+            onclick="(function(btn){var open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',!open);btn.classList.toggle('vui-toggle-active',!open);document.getElementById('<?= $navId ?>').classList.toggle('vui-navbar-open',!open);})(this)"
             aria-label="Toggle navigation"
         >
-            <span class="vui-navbar-burger"></span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
         </button>
 
         <div id="<?= $navId ?>" class="vui-navbar-menu">
@@ -759,7 +767,12 @@ $variant  = $variant  ?? 'info';
 $message  = $message  ?? ($slot ?? '');
 $duration = $duration ?? 3500;
 
-$icons    = ['success' => '✓', 'warning' => '⚠', 'danger' => '✕', 'info' => 'ℹ'];
+$icons = [
+    'success' => '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+    'warning' => '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+    'danger'  => '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>',
+    'info'    => '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>',
+];
 $variants = ['success' => 'vui-toast-success', 'warning' => 'vui-toast-warning', 'danger' => 'vui-toast-danger', 'info' => 'vui-toast-info'];
 $class    = 'vui-toast ' . ($variants[$variant] ?? $variants['info']);
 $icon     = $icons[$variant] ?? $icons['info'];
@@ -767,7 +780,9 @@ $icon     = $icons[$variant] ?? $icons['info'];
 <div id="<?= htmlspecialchars($id) ?>" class="<?= $class ?>" role="status" aria-live="polite" aria-atomic="true">
     <span class="vui-toast-icon" aria-hidden="true"><?= $icon ?></span>
     <span class="vui-toast-message"><?= htmlspecialchars($message) ?></span>
-    <button type="button" class="vui-toast-close" onclick="document.getElementById('<?= $id ?>').remove()" aria-label="Dismiss">✕</button>
+    <button type="button" class="vui-toast-close" onclick="document.getElementById('<?= $id ?>').remove()" aria-label="Dismiss" style="display:inline-flex;align-items:center;justify-content:center;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
 </div>
 
 <script>
