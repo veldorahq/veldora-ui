@@ -1538,7 +1538,12 @@ $suffix  = $suffix  ?? '';
         <p class="vui-stat-value"><?= htmlspecialchars($prefix) ?><?= htmlspecialchars($value) ?><?= htmlspecialchars($suffix) ?></p>
         <?php if ($trend !== null): ?>
             <span class="vui-stat-trend <?= $trendUp ? 'vui-trend-up' : 'vui-trend-down' ?>">
-                <?= $trendUp ? '&#9650;' : '&#9660;' ?> <?= htmlspecialchars($trend) ?>
+                <?php if ($trendUp): ?>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                <?php else: ?>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                <?php endif; ?>
+                <?= htmlspecialchars($trend) ?>
             </span>
         <?php endif; ?>
     </div>
@@ -1579,7 +1584,10 @@ $colKeys = array_keys($columns);
                 <tr>
                     <?php foreach ($columns as $key => $lbl): ?>
                         <th onclick="vuiDt_<?= $uid ?>_sort('<?= htmlspecialchars((string)$key) ?>')" style="cursor:pointer">
-                            <?= htmlspecialchars((string)$lbl) ?> <span>&#8597;</span>
+                            <div style="display:flex;align-items:center;gap:6px;">
+                                <span><?= htmlspecialchars((string)$lbl) ?></span>
+                                <svg class="vui-sort-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+                            </div>
                         </th>
                     <?php endforeach; ?>
                 </tr>
