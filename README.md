@@ -63,4 +63,4 @@ Then use directly in your `.veldora.php` views:
 
 - **Author**: Shahriyar Fahim
 - **License**: [MIT](LICENSE)
-- **Website**: [https://veldora.modrao.com](https://veldora.modrao.com)
+- **Website**: [https://veldora.modrao.com](https://veldora.modrao.com) *(temporary — permanent domain coming soon)*
