@@ -1072,7 +1072,9 @@ $start = max(1, $current - $window);
 $end   = min($total, $current + $window);
 ?>
 <nav class="vui-pagination" aria-label="Pagination">
-    <a href="<?= htmlspecialchars($url . $prev) ?>" class="vui-page-btn <?= $current <= 1 ? 'vui-page-disabled' : '' ?>" aria-label="Previous" <?= $current <= 1 ? 'aria-disabled="true"' : '' ?>>&#8592;</a>
+    <a href="<?= htmlspecialchars($url . $prev) ?>" class="vui-page-btn <?= $current <= 1 ? 'vui-page-disabled' : '' ?>" aria-label="Previous" <?= $current <= 1 ? 'aria-disabled="true"' : '' ?>>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
     <?php if ($start > 1): ?>
         <a href="<?= htmlspecialchars($url . '1') ?>" class="vui-page-btn">1</a>
         <?php if ($start > 2): ?><span class="vui-page-ellipsis">&hellip;</span><?php endif; ?>
@@ -1084,7 +1086,9 @@ $end   = min($total, $current + $window);
         <?php if ($end < $total - 1): ?><span class="vui-page-ellipsis">&hellip;</span><?php endif; ?>
         <a href="<?= htmlspecialchars($url . $total) ?>" class="vui-page-btn"><?= $total ?></a>
     <?php endif; ?>
-    <a href="<?= htmlspecialchars($url . $next) ?>" class="vui-page-btn <?= $current >= $total ? 'vui-page-disabled' : '' ?>" aria-label="Next" <?= $current >= $total ? 'aria-disabled="true"' : '' ?>>&#8594;</a>
+    <a href="<?= htmlspecialchars($url . $next) ?>" class="vui-page-btn <?= $current >= $total ? 'vui-page-disabled' : '' ?>" aria-label="Next" <?= $current >= $total ? 'aria-disabled="true"' : '' ?>>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
 </nav>
 TEMPLATE,
         ];
