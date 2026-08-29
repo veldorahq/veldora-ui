@@ -26,9 +26,12 @@ jobs:
         run: |
           VERSION="${{ steps.version.outputs.VERSION }}"
           VERSION_NO_V="${VERSION#v}"
-          NOTES=$(awk "/^## \[?${VERSION_NO_V}\]?/{flag=1; next} /^## \[?[0-9]/{if(flag) exit} flag" CHANGELOG.md)
+          NOTES=""
+          if [ -f "CHANGELOG.md" ]; then
+            NOTES=$(awk "/^## \[?${VERSION_NO_V}\]?/{flag=1; next} /^## \[?[0-9]/{if(flag) exit} flag" CHANGELOG.md || true)
+          fi
           if [ -z "$NOTES" ]; then
-            NOTES="See [CHANGELOG.md](https://github.com/veldorahq/veldora-ui/blob/main/CHANGELOG.md) for details."
+            NOTES="Release ${{ steps.version.outputs.VERSION }} — see [CHANGELOG.md](https://github.com/veldorahq/veldora-ui/blob/main/CHANGELOG.md) for details."
           fi
           {
             echo 'NOTES<<EOF'
@@ -38,6 +41,8 @@ jobs:
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: "veldora/ui ${{ steps.version.outputs.VERSION }}"
           body: |
