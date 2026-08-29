@@ -586,22 +586,67 @@ TEMPLATE,
     private function spinner(): array
     {
         return [
-            'description' => 'Animated loading spinner with size variants',
-            'usage'       => '<x-spinner size="md" label="Loading..." />',
+            'description' => 'Animated loading spinner with 12 pure CSS variants and sizes',
+            'usage'       => '<x-spinner variant="dual-ring" size="md" label="Loading..." />',
             'template'    => <<<'TEMPLATE'
 <?php
 // Veldora UI — Spinner Component
-// Props: size (sm|md|lg), label (screen-reader text)
-$size  = $size  ?? 'md';
-$label = $label ?? 'Loading...';
+// Props: variant (classic|dual-ring|bounce-dots|pulse|ring-pulse|wave-bars|dot-grid|spinning-bars|orbit), size (sm|md|lg), label, color
+$variant = $variant ?? 'classic';
+$size    = $size    ?? 'md';
+$label   = $label   ?? 'Loading...';
+$color   = $color   ?? null;
+$styleAttr = $color ? 'style="--vui-spinner-color:' . htmlspecialchars($color) . '"' : '';
 
 $sizes = ['sm' => 'vui-spinner-sm', 'md' => 'vui-spinner-md', 'lg' => 'vui-spinner-lg'];
-$class = 'vui-spinner ' . ($sizes[$size] ?? $sizes['md']);
+$sizeClass = $sizes[$size] ?? $sizes['md'];
 ?>
-<span class="<?= $class ?>" role="status" aria-label="<?= htmlspecialchars($label) ?>">
+<?php if ($variant === 'dual-ring'): ?>
+<span class="vui-spinner-dual <?= $sizeClass ?>" role="status" aria-label="<?= htmlspecialchars($label) ?>" <?= $styleAttr ?>>
+    <span></span><span></span>
+    <span class="vui-sr-only"><?= htmlspecialchars($label) ?></span>
+</span>
+<?php elseif ($variant === 'bounce-dots'): ?>
+<span class="vui-spinner-bounce <?= $sizeClass ?>" role="status" aria-label="<?= htmlspecialchars($label) ?>" <?= $styleAttr ?>>
+    <span></span><span></span><span></span>
+    <span class="vui-sr-only"><?= htmlspecialchars($label) ?></span>
+</span>
+<?php elseif ($variant === 'pulse'): ?>
+<span class="vui-spinner-pulse <?= $sizeClass ?>" role="status" aria-label="<?= htmlspecialchars($label) ?>" <?= $styleAttr ?>>
+    <span></span>
+    <span class="vui-sr-only"><?= htmlspecialchars($label) ?></span>
+</span>
+<?php elseif ($variant === 'ring-pulse'): ?>
+<span class="vui-spinner-ring-pulse <?= $sizeClass ?>" role="status" aria-label="<?= htmlspecialchars($label) ?>" <?= $styleAttr ?>>
+    <span></span>
+    <span class="vui-sr-only"><?= htmlspecialchars($label) ?></span>
+</span>
+<?php elseif ($variant === 'wave-bars'): ?>
+<span class="vui-spinner-wave <?= $sizeClass ?>" role="status" aria-label="<?= htmlspecialchars($label) ?>" <?= $styleAttr ?>>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span class="vui-sr-only"><?= htmlspecialchars($label) ?></span>
+</span>
+<?php elseif ($variant === 'dot-grid'): ?>
+<span class="vui-spinner-dot-grid <?= $sizeClass ?>" role="status" aria-label="<?= htmlspecialchars($label) ?>" <?= $styleAttr ?>>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span class="vui-sr-only"><?= htmlspecialchars($label) ?></span>
+</span>
+<?php elseif ($variant === 'spinning-bars'): ?>
+<span class="vui-spinner-bars <?= $sizeClass ?>" role="status" aria-label="<?= htmlspecialchars($label) ?>" <?= $styleAttr ?>>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span class="vui-sr-only"><?= htmlspecialchars($label) ?></span>
+</span>
+<?php elseif ($variant === 'orbit'): ?>
+<span class="vui-spinner-orbit <?= $sizeClass ?>" role="status" aria-label="<?= htmlspecialchars($label) ?>" <?= $styleAttr ?>>
+    <span class="orb-core"></span><span class="orb-satellite"></span>
+    <span class="vui-sr-only"><?= htmlspecialchars($label) ?></span>
+</span>
+<?php else: ?>
+<span class="vui-spinner <?= $sizeClass ?>" role="status" aria-label="<?= htmlspecialchars($label) ?>" <?= $styleAttr ?>>
     <span class="vui-spinner-ring"></span>
     <span class="vui-sr-only"><?= htmlspecialchars($label) ?></span>
 </span>
+<?php endif; ?>
 TEMPLATE,
         ];
     }
