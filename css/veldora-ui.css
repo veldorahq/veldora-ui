@@ -1693,3 +1693,134 @@
     .vui-pagination { justify-content: center; gap: 2px; }
     .vui-page-btn { min-width: 30px; height: 30px; padding: 0 6px; font-size: 12px; }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Button Glow & Glass Variants
+   ───────────────────────────────────────────────────────────────────────────── */
+.vui-btn-glow-violet {
+    background: linear-gradient(135deg, #7c6ef5, #6366f1);
+    color: #fff;
+    border: 1px solid #8b5cf6;
+    padding: 9px 22px;
+    border-radius: 9px;
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(124, 110, 245, 0.45);
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+.vui-btn-glow-violet:hover {
+    box-shadow: 0 0 28px rgba(124, 110, 245, 0.7);
+    transform: translateY(-1px);
+}
+
+.vui-btn-glow-emerald {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #fff;
+    border: 1px solid #34d399;
+    padding: 9px 22px;
+    border-radius: 9px;
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.45);
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+.vui-btn-glow-emerald:hover {
+    box-shadow: 0 0 28px rgba(16, 185, 129, 0.7);
+    transform: translateY(-1px);
+}
+
+.vui-btn-glow-sunset {
+    background: linear-gradient(135deg, #f97316, #ef4444);
+    color: #fff;
+    border: 1px solid #fb923c;
+    padding: 9px 22px;
+    border-radius: 9px;
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.45);
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+.vui-btn-glow-sunset:hover {
+    box-shadow: 0 0 28px rgba(249, 115, 22, 0.7);
+    transform: translateY(-1px);
+}
+
+.vui-btn-glow-cyan {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+    color: #fff;
+    border: 1px solid #38bdf8;
+    padding: 9px 22px;
+    border-radius: 9px;
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.45);
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+.vui-btn-glow-cyan:hover {
+    box-shadow: 0 0 28px rgba(6, 182, 212, 0.7);
+    transform: translateY(-1px);
+}
+
+.vui-btn-glass {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 9px;
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+.vui-btn-glass:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+.vui-btn-social {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 18px;
+    border-radius: 9px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid #282c3c;
+    background: #141620;
+    color: #fff;
+    transition: all 0.15s ease;
+    font-family: inherit;
+}
+.vui-btn-social:hover {
+    background: #1b1e2c;
+    border-color: #3b4056;
+    transform: translateY(-1px);
+}
+
+.vui-btn-group {
+    display: inline-flex;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--vui-border);
+}
+.vui-btn-group .vui-btn {
+    border-radius: 0;
+    border: none;
+    border-right: 1px solid var(--vui-border);
+}
+.vui-btn-group .vui-btn:last-child {
+    border-right: none;
+}
+
