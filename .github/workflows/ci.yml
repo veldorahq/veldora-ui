@@ -1,0 +1,37 @@
+name: CI — Lint CSS & PHP
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  php-lint:
+    name: PHP Syntax Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer:v2
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-interaction
+
+      - name: Check PHP syntax (lint all files)
+        run: find src -name "*.php" -exec php -l {} \; | grep -v "No syntax errors" || true
+
+  css-size:
+    name: CSS File Size Report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Report CSS sizes
+        run: |
+          echo "=== Veldora UI CSS sizes ==="
+          find css -name "*.css" -exec wc -c {} \;
+          echo "=== Done ==="

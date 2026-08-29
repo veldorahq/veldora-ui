@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract version
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Extract changelog notes
+        id: changelog
+        run: |
+          VERSION="${{ steps.version.outputs.VERSION }}"
+          VERSION_NO_V="${VERSION#v}"
+          NOTES=$(awk "/^## \[?${VERSION_NO_V}\]?/{flag=1; next} /^## \[?[0-9]/{if(flag) exit} flag" CHANGELOG.md)
+          if [ -z "$NOTES" ]; then
+            NOTES="See [CHANGELOG.md](https://github.com/veldorahq/veldora-ui/blob/main/CHANGELOG.md) for details."
+          fi
+          {
+            echo 'NOTES<<EOF'
+            echo "$NOTES"
+            echo 'EOF'
+          } >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "veldora/ui ${{ steps.version.outputs.VERSION }}"
+          body: |
+            ## What's Changed in ${{ steps.version.outputs.VERSION }}
+
+            ${{ steps.changelog.outputs.NOTES }}
+
+            ---
+
+            **Install:**
+            ```bash
+            composer require veldora/ui:${{ steps.version.outputs.VERSION }}
+            ```
+            Or add components via CLI:
+            ```bash
+            php veldora add button card modal input radio checkbox switch
+            ```
+
+            **Full Changelog**: https://github.com/veldorahq/veldora-ui/blob/main/CHANGELOG.md
+            **Component Docs**: https://veldora.modrao.com/components
+          draft: false
+          prerelease: ${{ contains(steps.version.outputs.VERSION, '-') }}
