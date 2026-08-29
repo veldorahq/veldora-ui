@@ -10,7 +10,7 @@ Inspired by shadcn/ui • 41+ Ready-to-Use Components • Pure CSS & Tailwind-Co
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-8b5cf6?style=flat-square)](LICENSE)
 [![PHP Version](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=flat-square&logo=php&logoColor=white)](https://php.net)
-[![Version](https://img.shields.io/badge/version-0.5.0-7c6ef5.svg?style=flat-square)](https://github.com/veldorahq/veldora-ui)
+[![Version](https://img.shields.io/badge/version-0.5.2-7c6ef5.svg?style=flat-square)](https://github.com/veldorahq/veldora-ui)
 
 </div>
 

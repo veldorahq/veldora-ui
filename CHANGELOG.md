@@ -5,6 +5,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.5.2] — 2026-08-30
+
+### Added
+- **Multi-Aesthetic Design System**: Complete suite of Skeuomorphic 3D, Flat Minimalist 2D, Neumorphic Soft UI, and Glassmorphism design variants across `Radio`, `Checkbox`, `Switch`, and `Button` components.
+  - `<x-radio variant="skeuomorphic|flat|neumorphic">`
+  - `<x-checkbox variant="skeuomorphic|flat|neumorphic">`
+  - `<x-switch variant="skeuomorphic|flat|neumorphic">`
+  - `<x-button variant="skeuomorphic|flat|neumorphic|glass">`
+- **Modern SaaS Sidebar**: High-performance dashboard navigation with Workspace switcher, Quick Search (⌘K), categorized sections, active state indicator, badge pills, and user profile footer.
+- **Enhanced Toast Notification Engine**: Semantic variants (`success`, `danger`, `warning`, `info`, `purple`), auto-dismiss countdown timer, and `window.showToast()` API.
+- **ComponentRegistry Generator Upgrades**: Added full template support for all new design styles.
+
+### Fixed
+- Fixed horizontal inline-flex row alignment for custom radio & checkbox controls so the disc/box icon and title text always sit cleanly on the same line.
+- Unified `composer.json` version metadata with git release tags for zero-warning Packagist synchronization.
+
+---
+
 ## [0.5.0] — 2026-08-25
 
 ### Added
