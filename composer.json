@@ -1,6 +1,6 @@
 {
     "name": "veldora/ui",
-    "version": "0.5.6",
+    "version": "0.5.7",
     "description": "Official UI component library for the Veldora PHP framework",
     "type": "library",
     "keywords": ["veldora", "ui", "components", "php", "templates"],
