@@ -5,7 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-## [0.5.2] — 2026-08-30
+## [0.5.6] — 2026-08-30
+
+### Fixed
+- **Sync**: Bumped release version to sync with framework core and scaffolding tools.
+
+---
+
+## [0.5.5] — 2026-08-30
 
 ### Added
 - **Multi-Aesthetic Design System**: Complete suite of Skeuomorphic 3D, Flat Minimalist 2D, Neumorphic Soft UI, and Glassmorphism design variants across `Radio`, `Checkbox`, `Switch`, and `Button` components.
